@@ -1,0 +1,42 @@
+.top {
+	border-top: 5px solid white;
+}
+
+.right {
+	border-right: 5px solid white;
+}
+
+.bottom {
+	border-bottom: 5px solid white;
+}
+
+.left {
+	border-left: 5px solid white;
+}
+
+.unvisited {
+	border: 5px solid lightblue;
+	background-color: lightblue;
+}
+
+.active {
+	background-color: red !important;
+	box-shadow: inset 0 0 5px rgb(0, 0, 0, .5);
+	transition: none;
+}
+
+.destination-cell {
+	background-color: fuchsia;
+	box-shadow: inset 0 0 5px rgb(0, 0, 0, .5);
+}
+
+.on-search {
+	transition: background-color 100ms ease-in-out;
+	background-color: #ff5733;
+}
+
+.on-path {
+	transition: background-color 300ms ease-in-out;
+	background-color: lightgreen;
+	box-shadow: inset 0 0 5px rgb(0, 0, 0, .8);
+}
