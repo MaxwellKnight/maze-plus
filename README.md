@@ -30,30 +30,30 @@ This project is a maze-solving application built with Vite, leveraging TypeScrip
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/MaxwellKnight/maze-plus.git``
+   git clone https://github.com/MaxwellKnight/maze-plus.git
 
    ```
 
 2. Navigate to the project directory:
 
    ```bash
-   cd maze-solver-project``
+   cd maze-solver-project
 
    ```
 
 3. Install dependencies:
 
    ```bash
-   `npm install``
+   npm install
 
    ```
 
 4. Run the project:
 
-   ````bash
-   `npm run dev```
+   ```bash
+   npm run dev
 
-   ````
+   ```
 
 The application will be accessible at http://localhost:5173.
 
