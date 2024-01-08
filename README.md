@@ -164,8 +164,16 @@ The project structure is organized as follows:
 
 ## Screenshots
 
+### Creating the maze (DFS)
+
 ![Alt text](/creating-maze.png?raw=true "Screenshot of the process of creating the maze")
+
+### Searching for shortest path (BFS, between (0,0) -> (row - 1, column - 1))
+
 ![Alt text](/searching.png?raw=true "Screenshot of the BFS algorithm at work finding the shortest path")
+
+### Displaying the shortest path
+
 ![Alt text](/shortest-path.png?raw=true "Screenshot of the shortest path in the maze")
 
 ## Comparison: TypeScript vs. Plain JavaScript
