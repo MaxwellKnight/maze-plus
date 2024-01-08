@@ -112,7 +112,7 @@ export const execute = (initialDelay: number = 0) => {
 	const api: ExecuteAPI = {
 		add,
 		delay,
-		start: start,
+		start,
 	};
 
 	return api;
