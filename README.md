@@ -1,4 +1,4 @@
-``# Maze Solver Project - TypeScript Upgrade
+# Maze Generator and Solver using DFS and BFS algorithms in JavaScript with React UI
 
 This project is a maze-solving application built with Vite, leveraging TypeScript for improved type safety. The maze creation and solving algorithms include Depth-First Search (DFS) and Breadth-First Search (BFS). The codebase also incorporates utility functions `forEach` and `execute` to enhance asynchronous iteration and execution chaining, respectively.
 
