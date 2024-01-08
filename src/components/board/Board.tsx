@@ -6,7 +6,7 @@ import { getMaze } from "../../algorithms/dfs_maze";
 import Cell from '../cell/Cell';
 import './board.css'
 
-const DEFAULT_DELAY = 1;
+const DEFAULT_DELAY = 5;
 const DEFAULT_CELL = "0000";
 const createMaze = (rows: number, columns: number) => Array(rows).fill([]).map(() => Array(columns).fill(DEFAULT_CELL));
 

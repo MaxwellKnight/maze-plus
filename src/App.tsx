@@ -45,7 +45,7 @@ const App = () => {
 			<Board 
 				columns={rows} 
 				rows={columns} 
-				defaultDelay={1} 
+				defaultDelay={5} 
 				reset={reset} 
 				setReset={setReset} 
 				drawing={{isDrawing, setIsDrawing, isDone, setIsDone}}
