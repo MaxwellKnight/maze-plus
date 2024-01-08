@@ -21,8 +21,8 @@
 tr { overflow: hidden; }
 
 .unvisited {
-	border: 5px solid lightblue;
-	background-color: lightblue;
+	border: 5px solid #F0ECE5;
+	background-color: #F0ECE5;
 	transition: background-color 300ms ease-in-out;
 	transition: background-color 300ms ease-in-out;
 	transition: border-top border-right border-left border-bottom 300ms ease-in-out;
