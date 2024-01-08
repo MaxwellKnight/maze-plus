@@ -37,7 +37,7 @@ This project is a maze-solving application built with Vite, leveraging TypeScrip
 2. Navigate to the project directory:
 
    ```bash
-   cd maze-solver-project
+   cd maze-plus
 
    ```
 
