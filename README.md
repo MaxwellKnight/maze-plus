@@ -55,7 +55,7 @@ This project is a maze-solving application built with Vite, leveraging TypeScrip
 
    ````
 
-The application will be accessible at http://localhost:3000.
+The application will be accessible at http://localhost:5173.
 
 ## Maze Algorithms
 
