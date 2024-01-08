@@ -3,7 +3,7 @@
 	"private": true,
 	"version": "0.0.0",
 	"type": "module",
-	"homepage": "https://github.com/MaxwellKnight/maze-plus.git",
+	"homepage": ".",
   
 	"scripts": {
 		"dev": "vite",
