@@ -15,7 +15,7 @@ type ForEachCallback<T> = (element: T, index: number, array: T[]) => void;
  * Asynchronous iteration through an array, applying a callback function on each element with a specified delay.
  *
  * @param {T[]} array - The array to iterate over.
- * @param {(element: T, index: number) => void} callback - The callback function to apply on each element.
+ * @param {ForEachCallback<T>} callback - The callback function to apply on each element.
  * @param {number} delay - The delay between each iteration in milliseconds.
  * @param {number} offset - Optional offset for the initial delay before starting the iteration.
  * @returns {Promise<void>} - A Promise that resolves when the iteration is complete.
@@ -42,6 +42,7 @@ export const forEach = <T>(array: T[], callback: ForEachCallback<T>, delay?: num
 						});
 					} catch (error) {
 						console.log("Error in forEach: ", error);
+						throw new Error("could not resolve callback");
 					}
 				}
 				// Resolve the outer Promise to signal the completion of the entire iteration
@@ -58,7 +59,7 @@ export const forEach = <T>(array: T[], callback: ForEachCallback<T>, delay?: num
  *
  * @param {number} initialDelay - The initial delay for the first function in the chain.
  */
-export const execute = (initialDelay: number = 0) => {
+export const execute = (initialDelay: number = NO_DELAY) => {
 	let queue: Promise<void> | null = null;
 	let currentDelay = initialDelay;
 	const functions: { fn: Function; delay: number }[] = [];
@@ -76,6 +77,7 @@ export const execute = (initialDelay: number = 0) => {
 				if (typeof fn === 'function') await Promise.resolve(fn());
 			} catch (error) {
 				console.error("Error in function: ", fn, error);
+				throw new Error("fn is a function");
 			}
 		};
 		
@@ -94,14 +96,14 @@ export const execute = (initialDelay: number = 0) => {
 		if(!queue){
 			queue = Promise.resolve(); // Initial promise for chaining
 
-			for(const func of functions){
+			for(const { fn, delay } of functions){
 				queue = queue.then(async () => {
 					try{
-						const { fn, delay } = func || { fn: () => {}, delay: 0 };
 						await new Promise((resolve) => setTimeout(resolve, delay));
 						await fn();
 					}catch(error){
-						console.log("Error in start: ", error);
+						console.error("Error in start: ", error);
+						throw new Error("Could not resolve fn");
 					}
 				});
 			}
