@@ -52,7 +52,7 @@ button:disabled {
  /* Media query for larger screens */
 @media (min-width: 50rem) {
 	.table {
-		max-height: 90vh;
+		max-height: 85vh;
 	  transform: rotate(0);
 	}
  
