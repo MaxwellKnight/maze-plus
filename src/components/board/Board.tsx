@@ -75,11 +75,9 @@ const Board = ({ rows, columns, defaultDelay, reset, drawing, setReset }: BoardP
 			return;
 		}
 
-		// Extract the shortest path
 		const [shortest, _] = result;
 
 		await forEach(shortest, (coordinate: Coordinate, index: number) => {
-			// Update the current cell in the temporary maze
 			const { x, y } = coordinate;
 			const tempMaze = [...maze];
 			tempMaze[x][y] = maze[x][y] + "0";
@@ -102,11 +100,9 @@ const Board = ({ rows, columns, defaultDelay, reset, drawing, setReset }: BoardP
 			return;
 		}
 
-		// Extract the trail path
 		const [_, path] = result;
 
 		await forEach(path, (coordinate: Coordinate, index: number) => {
-			// Update the current cell in the temporary maze
 			const { x, y } = coordinate;
 			const tempMaze = [...maze];
 			tempMaze[x][y] = maze[x][y] + "1";
