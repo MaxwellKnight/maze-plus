@@ -2,12 +2,20 @@ import { useEffect, useState } from 'react'
 import Board from './components/board/Board'
 import './App.css'
 
+//in pixels
+const CELL_SIZES = {
+	small: 20,
+	medium: 30,
+	large: 40,
+}
+
 const calculateMazeDimensions = () => {
 	const screenWidth = window.innerWidth;
 	const screenHeight = window.innerHeight;
+	const { medium, large } = CELL_SIZES;
  
 	// Adjust these values according to your preferences
-	const cellSize = screenWidth > 500 ? 30 : 20; // Size of each cell in pixels
+	const cellSize = screenWidth > 800 ? large : medium; // Size of each cell in pixels
  
 	// Calculate the number of columns and rows based on the screen dimensions and cell size
 	const rows = Math.floor(screenWidth / cellSize);
