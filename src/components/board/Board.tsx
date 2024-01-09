@@ -115,13 +115,22 @@ const Board = ({ rows, columns, defaultDelay, reset, drawing, setReset }: BoardP
 	};
 
 	const drawMaze = async () => await execute()
-													.add(() => setIsDone(false))
-													.add(() => animateMazeDFS(defaultDelay ** 2))
-													.add(() => animateSearchBFS(defaultDelay))
-													.add(() => animateShortestPathBFS(defaultDelay * 4))
-													.start()
-													.then(() => (setIsDrawing(false), setIsDone(true)))
-													.catch(error => console.error("Error in drawMaze: ", error));
+		.add(() => setIsDone(false))
+													
+		.add(() => animateMazeDFS(defaultDelay ** 2))
+													
+		.add(() => animateSearchBFS(defaultDelay))
+													
+		.add(() => animateShortestPathBFS(defaultDelay * 4))
+													
+		.start()
+													
+		.then(() => (setIsDrawing(false), setIsDone(true)))
+													
+		.catch(error => {
+			console.error("Error in drawMaze: ", error);
+			throw new Error("Error in drawMaze");
+		});
 
 	return (
 		<table className="table">

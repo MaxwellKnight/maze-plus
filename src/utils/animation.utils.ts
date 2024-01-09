@@ -33,13 +33,13 @@ export const forEach = <T>(array: T[], callback: ForEachCallback<T>, delay?: num
 					try {
 						// Use a Promise to introduce a delay before each iteration
 						await new Promise<void>((innerResolve) => {
-						setTimeout(() => {
-							callback(array[i], i, array);
+							setTimeout(() => {
+								callback(array[i], i, array);
 
-							// Resolve the inner Promise to signal the completion of the current iteration
-							innerResolve();
-						}, delay ? delay : NO_DELAY);
-						});
+								// Resolve the inner Promise to signal the completion of the current iteration
+								innerResolve();
+							}, delay ? delay : NO_DELAY);
+							});
 					} catch (error) {
 						console.log("Error in forEach: ", error);
 						throw new Error("could not resolve callback");
