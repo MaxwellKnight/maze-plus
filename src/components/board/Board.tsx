@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { bfs_shortest_path } from "../../algorithms/bfs_shortest_path";
 import { Coordinate, Maze } from "../../types/algorithms.types";
-import { forEach, execute } from "../../animation/animation";
+import { forEach, execute } from "../../utils/animation.utils";
 import { getMaze } from "../../algorithms/dfs_maze";
 import Cell from '../cell/Cell';
 import './board.css'
@@ -120,9 +120,9 @@ const Board = ({ rows, columns, defaultDelay, reset, drawing, setReset }: BoardP
 
 	const drawMaze = async () => await execute()
 													.add(() => setIsDone(false))
-													.add(() => animateMazeDFS(defaultDelay))
+													.add(() => animateMazeDFS(defaultDelay ** 2))
 													.add(() => animateSearchBFS(defaultDelay))
-													.add(() => animateShortestPathBFS(defaultDelay ** 5))
+													.add(() => animateShortestPathBFS(defaultDelay * 4))
 													.start()
 													.then(() => (setIsDrawing(false), setIsDone(true)))
 													.catch(error => console.error("Error in drawMaze: ", error));
