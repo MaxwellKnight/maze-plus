@@ -20,9 +20,9 @@ This project is a maze-solving application built with Vite, leveraging TypeScrip
 
 ## Comparison: TypeScript vs. Plain JavaScript
 
-The transition from plain JavaScript to TypeScript in this maze-solving project brings tangible benefits in terms of type safety, development experience, code readability, and maintainability. TypeScript's static typing and advanced tooling contribute to a more robust and developer-friendly codebase. With improved documentation and better support for refactoring, TypeScript proves to be a valuable choice for enhancing the overall quality
-
 I refactored an existing JavaScript project into TypeScript, enhancing type safety and overall code quality. If anyone is interested in exploring the converted version, they can find the project [here](https://github.com/MaxwellKnight/maze-generator).
+
+The transition from plain JavaScript to TypeScript in this maze-solving project brings tangible benefits in terms of type safety, development experience, code readability, and maintainability. TypeScript's static typing and advanced tooling contribute to a more robust and developer-friendly codebase. With improved documentation and better support for refactoring, TypeScript proves to be a valuable choice for enhancing the overall quality
 
 ## Getting Started
 
