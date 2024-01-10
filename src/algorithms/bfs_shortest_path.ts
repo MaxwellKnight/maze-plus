@@ -16,6 +16,7 @@ const bfs_shortest_path = ({ source, destination }: {
 
 	const queue: Coordinate[] = [], trail = [], visited = new Set<string>();
 	const start = { x: source.x, y: source.y, path: [], distance: 0 };
+	const ROWS = maze.length, COLUMNS = maze[0].length;
 	let shortest: Coordinate[] = [];
 
 	queue.push(start);
@@ -36,7 +37,7 @@ const bfs_shortest_path = ({ source, destination }: {
 			return [shortest, trail];
 		}
 
-		const neighbors: Coordinate[] = getNeighbors(current, maze.length, maze[0].length, maze, visited);
+		const neighbors: Coordinate[] = getNeighbors(current, ROWS, COLUMNS, maze, visited);
 		for (let neighbor of neighbors) {
 			const newNeighbor = { ...neighbor, path: [...(path || []), current], distance: distance ? distance + 1 : 0 };
 			queue.push(newNeighbor);
