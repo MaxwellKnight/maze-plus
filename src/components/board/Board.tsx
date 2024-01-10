@@ -43,7 +43,7 @@ const Board = ({ rows, columns, defaultDelay, reset, drawing, setReset }: BoardP
 		}
 
 		if(isDrawing) drawMaze();
-	}, [rows, columns, reset, drawing.isDrawing]);
+	}, [rows, columns, reset, isDrawing]);
 
 	/**
 	 * Animate the creation of a maze using the Depth-First Search algorithm.
