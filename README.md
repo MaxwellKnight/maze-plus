@@ -1,4 +1,4 @@
-# Maze Generator and Solver using DFS and BFS algorithms in JavaScript with React UI
+# Maze Generator and Solver using DFS and BFS algorithms in TypeScript with React UI
 
 This project is a maze-solving application built with Vite, leveraging TypeScript for improved type safety. The maze creation and solving algorithms include Depth-First Search (DFS) and Breadth-First Search (BFS). The codebase also incorporates utility functions `forEach` and `execute` to enhance asynchronous iteration and execution chaining, respectively.
 
@@ -15,12 +15,14 @@ This project is a maze-solving application built with Vite, leveraging TypeScrip
 - [forEach](#foreach)
 - [execute](#execute)
 - [Project Structure](#project-structure)
-- [Screenshots](#screenshots)
 - [Conclusion](#conclusion)
+- [Screenshots](#screenshots)
 
 ## Comparison: TypeScript vs. Plain JavaScript
 
 The transition from plain JavaScript to TypeScript in this maze-solving project brings tangible benefits in terms of type safety, development experience, code readability, and maintainability. TypeScript's static typing and advanced tooling contribute to a more robust and developer-friendly codebase. With improved documentation and better support for refactoring, TypeScript proves to be a valuable choice for enhancing the overall quality
+
+I refactored an existing JavaScript project into TypeScript, enhancing type safety and overall code quality. If anyone is interested in exploring the converted version, they can find the project [here](https://github.com/MaxwellKnight/maze-generator).
 
 ## Getting Started
 
@@ -120,6 +122,10 @@ The project structure is organized as follows:
 - **src/algorithms:** Houses the DFS and BFS maze generation and solving algorithms.
 - **src/animation:** Contains utility functions `execute` and `forEach` for managing asynchronous tasks and iteration.
 - **src/styles:** Includes stylesheets for the application.
+
+## Conclusion
+
+This project is a maze-solving application built with Vite, utilizing TypeScript for enhanced type safety. The maze creation and solving algorithms include Depth-First Search (DFS) and Breadth-First Search (BFS). TypeScript is favored for its benefits in code readability, maintainability, and development experience. The project also integrates utility functions, forEach and execute, for improved asynchronous iteration and execution chaining.
 
 ## Screenshots
 
