@@ -107,13 +107,13 @@ execute(initialDelay: number = 0): ExecuteAPI
 Methods:
 
 ```bash
-//Add a function to the execution chain with an optional delay.
+#!Add a function to the execution chain with an optional delay.
 add(fn: Function, delay?: number): ExecuteAPI
 
-//Set the delay for subsequent functions in the chain.
+#!Set the delay for subsequent functions in the chain.
 delay(delay: number): ExecuteAPI
 
-//Start the execution of the function chain.
+#!Start the execution of the function chain.
 start(): Promise<void>
 ```
 
