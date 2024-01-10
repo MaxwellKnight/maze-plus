@@ -127,7 +127,7 @@ The project structure is organized as follows:
 
 - **src/components:** Contains React components, including the `Board` and `Cell` components.
 - **src/algorithms:** Houses the DFS and BFS maze generation and solving algorithms.
-- **src/animation:** Contains utility functions `execute` and `forEach` for managing asynchronous tasks and iteration.
+- **src/utils:** Contains utility functions `execute` and `forEach` for managing asynchronous tasks and iteration.
 - **src/styles:** Includes stylesheets for the application.
 
 ## Conclusion
