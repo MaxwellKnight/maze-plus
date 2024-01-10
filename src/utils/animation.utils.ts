@@ -10,7 +10,7 @@ type ExecuteAPI = {
  };
 
 type ForEachCallback<T> = (element: T, index: number, array: T[]) => void;
-
+type FunctionQueue = { fn: Function; delay: number }[];
 /**
  * Asynchronous iteration through an array, applying a callback function on each element with a specified delay.
  *
@@ -62,7 +62,7 @@ export const forEach = <T>(array: T[], callback: ForEachCallback<T>, delay?: num
 export const execute = (initialDelay: number = NO_DELAY) => {
 	let queue: Promise<void> | null = null;
 	let currentDelay = initialDelay;
-	const functions: { fn: Function; delay: number }[] = [];
+	const functions: FunctionQueue  = [];
 
 	/**
 	 * Add a function to the execution chain with an optional delay.
