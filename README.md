@@ -2,6 +2,8 @@
 
 This project is a maze-solving application built with Vite, leveraging TypeScript for improved type safety. The maze creation and solving algorithms include Depth-First Search (DFS) and Breadth-First Search (BFS). The codebase also incorporates utility functions `forEach` and `execute` to enhance asynchronous iteration and execution chaining, respectively.
 
+If you want to mess around with it a little: [https://maxwellknight.github.io/maze-plus/](https://maxwellknight.github.io/maze-plus/)
+
 ## Table of Contents
 
 - [Comparison: TypeScript vs. Plain JavaScript](#comparison-typescript-vs-plain-javascript)
