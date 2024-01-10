@@ -71,7 +71,7 @@ export const execute = (initialDelay: number = NO_DELAY) => {
 	 * @param {number} delay - The delay before executing this function (defaults to the current delay).
 	 * @returns {ExecuteAPI} - The API object for method chaining.
 	 */
-	const add = (fn: Function, delay: number = NO_DELAY): ExecuteAPI => {
+	const add = (fn: Function, delay: number = currentDelay): ExecuteAPI => {
 		const wrappedFn = async () => {
 			try {
 				if (typeof fn === 'function') await Promise.resolve(fn());
@@ -82,7 +82,6 @@ export const execute = (initialDelay: number = NO_DELAY) => {
 		};
 		
 		functions.push({ fn: wrappedFn, delay });
-		currentDelay = delay;
 		return api;
 	 };
 	 
