@@ -5,7 +5,7 @@ type ExecuteAPI = {
 	add: (fn: Function, delay?: number) => ExecuteAPI;
 	//Set the delay for subsequent functions in the chain.
 	delay: (delay: number) => ExecuteAPI;
-	//* Start the execution of the function chain.
+	//Start the execution of the function chain.
 	start: () => Promise<void>;
  };
 

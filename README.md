@@ -1,6 +1,6 @@
 # Maze Generator and Solver using DFS and BFS algorithms in TypeScript with React UI
 
-This project is a maze-solving application built with Vite, leveraging TypeScript for improved type safety. The maze creation and solving algorithms include Depth-First Search (DFS) and Breadth-First Search (BFS). The codebase also incorporates utility functions `forEach` and `execute` to enhance asynchronous iteration and execution chaining, respectively.
+This project is a maze-solving application built in React, leveraging TypeScript for improved type safety. The maze creation and solving algorithms include Depth-First Search (DFS) and Breadth-First Search (BFS). The codebase also incorporates utility functions `forEach` and `execute` to enhance asynchronous iteration and execution chaining, respectively.
 
 If you want to mess around with it a little: [https://maxwellknight.github.io/maze-plus/](https://maxwellknight.github.io/maze-plus/)
 
@@ -107,8 +107,13 @@ execute(initialDelay: number = 0): ExecuteAPI
 Methods:
 
 ```bash
+//Add a function to the execution chain with an optional delay.
 add(fn: Function, delay?: number): ExecuteAPI
+
+//Set the delay for subsequent functions in the chain.
 delay(delay: number): ExecuteAPI
+
+//Start the execution of the function chain.
 start(): Promise<void>
 ```
 
