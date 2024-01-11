@@ -1,7 +1,7 @@
 
 .table {
 	width: 100%;
-	height: 85vh;
+	height: 75vh;
 	border-collapse: collapse;
 	background-color: #2D3250;
 	box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
@@ -52,7 +52,7 @@ button:disabled {
  /* Media query for larger screens */
 @media (min-width: 50rem) {
 	.table {
-		max-height: 85vh;
+		height: 85vh;
 	  transform: rotate(0);
 	}
  
