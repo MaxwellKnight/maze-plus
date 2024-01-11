@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Board from './components/board/Board'
 import './App.css'
 
@@ -28,20 +28,10 @@ const calculateMazeDimensions = () => {
 };
 
 const App = () => {
-	const [{rows, columns}, setMazeDimensions] = useState(calculateMazeDimensions());
+	const {rows, columns} = calculateMazeDimensions();
 	const [isDrawing, setIsDrawing] = useState(false);
 	const [isDone, setIsDone] = useState(false);
 	const [reset, setReset] = useState(false);
-
-	useEffect(() => {
-		const handleResize = () => {
-			setMazeDimensions(calculateMazeDimensions());
-		};
-
-		window.addEventListener('resize', handleResize);
-
-		return () => window.removeEventListener('resize', handleResize);
-	}, []);
 
 
 	return (
