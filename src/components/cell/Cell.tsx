@@ -50,9 +50,9 @@ const Cell = ({ borders, current, cell, destination }: CellProps) => {
   const [top, right, bottom, left] = borders.split('').map(Number);
 
   return (
-    <td className={getClassList({ top, right, bottom, left }, current, cell, destination)}>
-      {/* Content goes here if needed */}
-    </td>
+	<td className={getClassList({ top, right, bottom, left }, current, cell, destination)}>
+		{/* */}
+	</td>
   );
 };
 
