@@ -30,7 +30,7 @@ The transition from plain JavaScript to TypeScript in this maze-solving project 
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) (v14.0.0 or higher)
+- [Node.js](https://nodejs.org/) (v16.15.1 or higher)
 - [npm](https://www.npmjs.com/) or [Yarn](https://yarnpkg.com/)
 
 ### Installation
