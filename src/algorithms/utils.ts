@@ -4,6 +4,9 @@ import { Coordinate, Directions, Maze } from "../types/algorithms.types";
 const DIRECTIONS: Directions = { TOP: 0, RIGHT: 1, BOTTOM: 2, LEFT: 3 }
 const { TOP, RIGHT, BOTTOM, LEFT } = DIRECTIONS;
 
+//Represntation of a wall is "1" 
+const WALL = "1";
+
 // Constant object for mapping directions to their opposites
 const OPPOSITE_DIRECTIONS: { 
 	[key: number]: number 
@@ -44,6 +47,16 @@ const getCoordinateKey = (row: number, column: number): string => `${row},${colu
  * @returns {boolean} - True if the coordinate is within range; otherwise, false.
  */
 const validateRange = (x: number, y: number, rows: number, columns: number): boolean => (0 <= x && x < rows) && (0 <= y && y < columns);
+
+/**
+ * Update the current wall representation to include a wall in the specified direction.
+ *
+ * @param {string} currentWall - The current wall representation.
+ * @param {number} direction - The direction to add a wall (TOP, RIGHT, BOTTOM, LEFT).
+ * @returns {string} - The updated wall representation.
+ */
+const updateWall = (currentWall: string, direction: number) =>
+	currentWall.substring(0, direction) + WALL + currentWall.substring(direction + 1);
 
 /**
  * Validate if a neighboring cell is within range, unvisited, and has a valid path in the maze.
@@ -94,4 +107,6 @@ const getNeighbors = (source: Coordinate, rows: number, columns: number, maze: M
   return neighbors;
 }
 
-export { DIRECTIONS, DIRECTIONS_CORDS, OPPOSITE_DIRECTIONS, validateRange, getCoordinateKey, getNeighbors };
+
+
+export { DIRECTIONS, DIRECTIONS_CORDS, OPPOSITE_DIRECTIONS, validateRange, getCoordinateKey, getNeighbors, updateWall };

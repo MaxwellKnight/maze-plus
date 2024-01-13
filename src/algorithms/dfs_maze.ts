@@ -1,18 +1,8 @@
 import { Coordinate, Maze } from '../types/algorithms.types';
-import { DIRECTIONS, validateRange, OPPOSITE_DIRECTIONS, getCoordinateKey, DIRECTIONS_CORDS } from './utils';
+import { DIRECTIONS, validateRange, OPPOSITE_DIRECTIONS, getCoordinateKey, DIRECTIONS_CORDS, updateWall } from './utils';
 
 const { TOP, RIGHT, BOTTOM, LEFT } = DIRECTIONS;
-const WALL = "1";
 const DEFAULT_WALL = "0000";
-/**
- * Update the current wall representation to include a wall in the specified direction.
- *
- * @param {string} currentWall - The current wall representation.
- * @param {number} direction - The direction to add a wall (TOP, RIGHT, BOTTOM, LEFT).
- * @returns {string} - The updated wall representation.
- */
-const updateWall = (currentWall: string, direction: number) =>
-	currentWall.substring(0, direction) + WALL + currentWall.substring(direction + 1);
 
 /**
  * Validate if the neighbor cell in the specified direction is within the maze boundaries and has not been visited.
@@ -44,7 +34,7 @@ const getNeighbors = (source: Coordinate | undefined, visited: Set<string>, rows
 	if (!source) return [];
 
 	for (const direction of [TOP, RIGHT, BOTTOM, LEFT]) {
-		const destination: Coordinate | null = DIRECTIONS_CORDS[direction];
+		const destination = DIRECTIONS_CORDS[direction];
 		if (!destination) continue;
 
 		const x = source.x + destination.x;
@@ -62,7 +52,7 @@ const getNeighbors = (source: Coordinate | undefined, visited: Set<string>, rows
  * @param {number} columns - The number of columns in the maze.
  * @returns {[Maze, Coordinate[]]} - A tuple containing the generated maze and the trail of visited cells.
  */
-const getMaze = (rows: number, columns: number): [Maze, Coordinate[]] => {
+const createMazeDFS = (rows: number, columns: number): [Maze, Coordinate[]] => {
 	const stack: Coordinate[] = [], trail = [], visited = new Set<string>();
 	const start: Coordinate = { x: 0, y: 0 };
 	const maze: Maze = Array(rows).fill([]).map(() => Array(columns).fill(DEFAULT_WALL));
@@ -94,4 +84,4 @@ const getMaze = (rows: number, columns: number): [Maze, Coordinate[]] => {
 	return [maze, trail];
 };
 
-export { getMaze };
+export { createMazeDFS };

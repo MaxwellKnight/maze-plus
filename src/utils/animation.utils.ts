@@ -39,7 +39,7 @@ export const forEach = <T>(array: T[], callback: ForEachCallback<T>, delay?: num
 								// Resolve the inner Promise to signal the completion of the current iteration
 								innerResolve();
 							}, delay ? delay : NO_DELAY);
-							});
+						});
 					} catch (error) {
 						console.log("Error in forEach: ", error);
 						throw new Error("could not resolve callback");

@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { bfs_shortest_path } from "../../algorithms/bfs_shortest_path";
 import { Coordinate, Maze } from "../../types/algorithms.types";
 import { forEach, execute } from "../../utils/animation.utils";
-import { getMaze } from "../../algorithms/dfs_maze";
+import { createMazeDFS } from "../../algorithms/dfs_maze";
 import Cell from '../cell/Cell';
 import './board.css'
 
@@ -10,18 +10,19 @@ const DEFAULT_DELAY = 5;
 const DEFAULT_CELL = "0000";
 const createMaze = (rows: number, columns: number) => Array(rows).fill([]).map(() => Array(columns).fill(DEFAULT_CELL));
 
+type DrawingType = {
+	isDrawing: boolean;
+	setIsDrawing: Dispatch<SetStateAction<boolean>>;
+	isDone: boolean;
+	setIsDone: Dispatch<SetStateAction<boolean>>;
+}
 type BoardProps = {
 	rows: number;
 	columns: number;
 	defaultDelay: number;
 	reset: boolean;
 	setReset: Dispatch<SetStateAction<boolean>>;
-	drawing: {
-		isDrawing: boolean;
-		setIsDrawing: Dispatch<SetStateAction<boolean>>;
-		isDone: boolean;
-		setIsDone: Dispatch<SetStateAction<boolean>>;
-	}
+	drawing: DrawingType;
 }
 	
 const Board = ({ rows, columns, defaultDelay, reset, drawing, setReset }: BoardProps) => {
@@ -51,7 +52,7 @@ const Board = ({ rows, columns, defaultDelay, reset, drawing, setReset }: BoardP
 	 * @param {number} delay - The delay between each iteration in milliseconds.
 	 */
 	const animateMazeDFS = async (delay: number = DEFAULT_DELAY) => {
-		const [finalMaze, trail] = getMaze(rows, columns);
+		const [finalMaze, trail] = createMazeDFS(rows, columns);
 
 		await forEach(trail,(coordinate: Coordinate) => {
 			const { x, y } = coordinate;
@@ -116,9 +117,9 @@ const Board = ({ rows, columns, defaultDelay, reset, drawing, setReset }: BoardP
 
 	const drawMaze = async () => await execute()
 		.add(() => (setIsDrawing(true), setIsDone(false)))								
-		.add(() => animateMazeDFS(defaultDelay ** 2))
+		.add(() => animateMazeDFS(defaultDelay))
 		.add(() => animateSearchBFS(defaultDelay))
-		.add(() => animateShortestPathBFS(defaultDelay * 4))
+		.add(() => animateShortestPathBFS(defaultDelay))
 		.start()
 		.catch(error => {
 			console.error("Error in drawMaze: ", error);

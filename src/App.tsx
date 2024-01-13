@@ -4,9 +4,9 @@ import './App.css'
 
 //in pixels
 const CELL_SIZES = {
-	small: 20,
-	medium: 30,
-	large: 40,
+	small: 30,
+	medium: 40,
+	large: 50,
 }
 
 const calculateMazeDimensions = () => {
@@ -14,7 +14,6 @@ const calculateMazeDimensions = () => {
 	const screenHeight = window.innerHeight;
 	const { medium, large } = CELL_SIZES;
  
-	// Adjust these values according to your preferences
 	const cellSize = screenWidth > 800 ? large : medium; // Size of each cell in pixels
  
 	// Calculate the number of columns and rows based on the screen dimensions and cell size
@@ -43,7 +42,7 @@ const App = () => {
 			<Board 
 				columns={rows} 
 				rows={columns} 
-				defaultDelay={5} 
+				defaultDelay={25} 
 				reset={reset} 
 				setReset={setReset} 
 				drawing={{isDrawing, setIsDrawing, isDone, setIsDone}}
