@@ -1,5 +1,5 @@
 import { Coordinate, Maze } from "../types/algorithms.types";
-import { getCoordinateKey, getNeighbors } from "./utils";
+import { getCoordinateKey, getNeighbors } from "../utils/algorithms.utils";
 
 /**
  * Find the shortest path using Breadth-First Search (BFS) algorithm.

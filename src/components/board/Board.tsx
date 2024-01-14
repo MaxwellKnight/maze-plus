@@ -1,10 +1,9 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import { bfs_shortest_path } from "../../algorithms/bfs_shortest_path";
 import { Coordinate, Maze } from "../../types/algorithms.types";
 import { forEach, execute } from "../../utils/animation.utils";
-import { createMazeDFS } from "../../algorithms/dfs_maze";
 import Cell from '../cell/Cell';
 import './board.css'
+import { bfs_shortest_path, createMazeDFS } from "../../algorithms";
 
 const DEFAULT_DELAY = 5;
 const DEFAULT_CELL = "0000";
@@ -70,7 +69,7 @@ const Board = ({ rows, columns, defaultDelay, reset, drawing, setReset }: BoardP
 	 * @param {number} delay - The delay between each iteration in milliseconds.
 	 */
 	const animateShortestPathBFS = async (delay: number = DEFAULT_DELAY) => {
-		const result= bfs_shortest_path({ source: START_COORDS, destination: END_COORDS }, maze);
+		const result = bfs_shortest_path({ source: START_COORDS, destination: END_COORDS }, maze);
 		if (!result || result[0].length === 0) {
 			console.error("Error with result bfs_shortest_path");
 			return;

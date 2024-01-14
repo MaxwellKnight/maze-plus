@@ -5,7 +5,8 @@ interface XY {
 
 export interface Coordinate extends XY  { 
 	direction?: number; 
-	distance?: number; 
+	distance?: number;
+	heuristic?: number; 
 	path?: XY[];
 };
 
