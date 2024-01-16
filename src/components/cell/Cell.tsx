@@ -2,11 +2,10 @@ import './cell.css';
 
 const BORDER_ACTIVE = 0;
 
-interface CellProps {
-  borders: string;
-  current: boolean;
-  cell: string;
-  destination: boolean | null;
+interface CellProps extends React.DetailedHTMLProps<React.TdHTMLAttributes<HTMLTableCellElement>, HTMLTableCellElement> {
+  isCurrent: boolean;
+  walls: string;
+  isDestination: boolean | null;
 }
 
 /**
@@ -19,18 +18,18 @@ interface CellProps {
  * @returns A string of CSS classes for styling the table cell.
  */
 const getClassList = (
-	borders: { top: number; right: number; bottom: number; left: number },
+	directions: { top: number; right: number; bottom: number; left: number },
 	isCurrent: boolean,
-	cell: string,
+	walls: string,
 	isDestination: boolean | null
  ): string => {
 	let cellClass = 'table-cell ';
-	const {top, right, bottom, left} = borders;
+	const {top, right, bottom, left} = directions;
 	
 	// Check for specific cell states and add corresponding CSS classes
-	if (cell.length > 5 && cell[5] === '0') 
+	if (walls.length > 5 && walls[5] === '0') 
 	  cellClass += 'on-path ';
-	if(cell.length > 4 && cell[4] === '1')
+	if(walls.length > 4 && walls[4] === '1')
 	  cellClass += 'on-search ';
  
 	if (isDestination) cellClass += 'destination-cell ';
@@ -46,14 +45,15 @@ const getClassList = (
 	return cellClass;
  };
 
-const Cell = ({ borders, current, cell, destination }: CellProps) => {
-  const [top, right, bottom, left] = borders.split('').map(Number);
+const Cell = ({ isCurrent, walls, isDestination, ...attr }: CellProps) => {
+	const [top, right, bottom, left] = walls.split('').map(Number);
+	const cellClass = getClassList({ top, right, bottom, left }, isCurrent, walls, isDestination);
 
-  return (
-	<td className={getClassList({ top, right, bottom, left }, current, cell, destination)}>
-		{/* */}
-	</td>
-  );
+	return (
+		<td className={cellClass} {...attr}>
+			{/* */}
+		</td>
+	);
 };
 
 export default Cell;

@@ -1,9 +1,9 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { animateMazeDFS, animateSearchBFS, animateShortestPathBFS } from "./animations";
 import { Coordinate, Maze } from "../../types/algorithms.types";
 import { execute } from "../../utils/animation.utils";
 import Cell from '../cell/Cell';
-import './board.css'
-import { animateMazeDFS, animateSearchBFS, animateShortestPathBFS } from "./animations";
+import './board.css';
 
 const DEFAULT_CELL = "0000";
 export const createMaze = (rows: number, columns: number) => Array(rows).fill([]).map(() => Array(columns).fill(DEFAULT_CELL));
@@ -59,15 +59,15 @@ const Board = ({ rows, columns, defaultDelay, reset, drawing, setReset }: BoardP
 	return (
 		<table className="table">
 			<tbody>
-				{maze.map((row, rIndex) => (
-					<tr key={rIndex} className='table-row'>
-						{row.map((borders, cIndex) =>
+				{maze.map((row, x) => (
+					<tr key={x} className='table-row'>
+						{row.map((walls, y) =>
 							<Cell
-								key={cIndex}
-								cell={maze[rIndex][cIndex]}
-								destination={destinationCell && destinationCell.x === rIndex && destinationCell.y === cIndex}
-								borders={borders}
-								current={currentCell.x === rIndex && currentCell.y === cIndex} />
+								key={`${x},${y}`}
+								walls={walls}
+								isDestination={destinationCell && destinationCell.x === x && destinationCell.y === y}
+								isCurrent={currentCell.x === x && currentCell.y === y} 
+							/>
 						)}
 					</tr>
 				))}
