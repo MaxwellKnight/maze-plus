@@ -22,31 +22,32 @@ const getClassList = (
 	walls: string
  ): string => {
 	const [top, right, bottom, left] = walls.split('');
-	let cellClass = 'table-cell ';
+	let classList = 'table-cell ';
 	
 	// Check for specific cell states and add corresponding CSS classes
 	if (walls.length > 5 && walls[5] === '0') 
-	  cellClass += 'on-path ';
+	  classList += 'on-path ';
 	if(walls.length > 4 && walls[4] === '1')
-	  cellClass += 'on-search ';
+	  classList += 'on-search ';
  
-	if (isDestination) cellClass += 'destination-cell ';
+	if (isDestination) classList += 'destination-cell ';
  
 	// Add border-related CSS classes based on the cell's borders
 	if (top === right && right === bottom && bottom === left && left === BORDER_ACTIVE) return 'unvisited';
-	if (top === BORDER_ACTIVE)     cellClass += 'top ';
-	if (right === BORDER_ACTIVE)   cellClass += 'right ';
-	if (bottom === BORDER_ACTIVE)  cellClass += 'bottom ';
-	if (left === BORDER_ACTIVE)    cellClass += 'left ';
-	if (isCurrent) cellClass += 'active ';
+	if (top === BORDER_ACTIVE)     classList += 'top ';
+	if (right === BORDER_ACTIVE)   classList += 'right ';
+	if (bottom === BORDER_ACTIVE)  classList += 'bottom ';
+	if (left === BORDER_ACTIVE)    classList += 'left ';
+	if (isCurrent) classList += 'active ';
  
-	return cellClass;
+	return classList;
  };
 
-const Cell = ({ isCurrent, walls, isDestination, className, ...attr }: CellProps) => {
-	const classList = getClassList(isCurrent, isDestination, walls);
+const Cell = ({ isCurrent, walls, isDestination, ...attr }: CellProps) => {
+	const className = getClassList(isCurrent, isDestination, walls);
+
 	return (
-		<td className={`${classList} ${className}`} {...attr}>
+		<td className={className} {...attr}>
 			{/* */}
 		</td>
 	);
