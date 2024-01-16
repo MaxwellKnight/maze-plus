@@ -47,10 +47,10 @@ const getClassList = (
 
 const Cell = ({ isCurrent, walls, isDestination, ...attr }: CellProps) => {
 	const [top, right, bottom, left] = walls.split('').map(Number);
-	const cellClass = getClassList({ top, right, bottom, left }, isCurrent, walls, isDestination);
+	const className = getClassList({ top, right, bottom, left }, isCurrent, walls, isDestination);
 
 	return (
-		<td className={cellClass} {...attr}>
+		<td className={className} {...attr}>
 			{/* */}
 		</td>
 	);
