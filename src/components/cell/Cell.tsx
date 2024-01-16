@@ -43,11 +43,10 @@ const getClassList = (
 	return cellClass;
  };
 
-const Cell = ({ isCurrent, walls, isDestination, ...attr }: CellProps) => {
-	const className = getClassList(isCurrent, isDestination, walls);
-
+const Cell = ({ isCurrent, walls, isDestination, className, ...attr }: CellProps) => {
+	const classList = getClassList(isCurrent, isDestination, walls);
 	return (
-		<td className={className} {...attr}>
+		<td className={`${classList} ${className}`} {...attr}>
 			{/* */}
 		</td>
 	);
