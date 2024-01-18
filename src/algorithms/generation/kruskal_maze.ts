@@ -6,7 +6,7 @@ const DEFAULT_WALL = "0000";
 export const createMazeKruskal = (rows: number, columns: number): [Maze, Coordinate[]] => {
 	const maze: Maze = Array(rows).fill([]).map(() => Array(columns).fill(DEFAULT_WALL));
 	const sets: number[] = Array(rows * columns).fill(0).map((_, index) => index);
-	const edges: { V: Coordinate, W: Coordinate }[] = [];
+	const edges: { source: Coordinate, destination: Coordinate }[] = [];
 
 	// Helper function to find the representative element of a set
 	const findSet = (index: number): number => {
@@ -25,8 +25,8 @@ export const createMazeKruskal = (rows: number, columns: number): [Maze, Coordin
 	// Populate edges
 	for (let x = 0; x < rows; x++) {
 		for (let y = 0; y < columns; y++) {
-			if (x < rows - 1) edges.push({ V: { x, y }, W: { x: x + 1, y } });
-			if (y < columns - 1) edges.push({ V: { x, y }, W: { x, y: y + 1 } });
+			if (x < rows - 1) edges.push({ source: { x, y }, destination: { x: x + 1, y } });
+			if (y < columns - 1) edges.push({ source: { x, y }, destination: { x, y: y + 1 } });
 		}
 	}
 
@@ -38,16 +38,15 @@ export const createMazeKruskal = (rows: number, columns: number): [Maze, Coordin
 
 	// Kruskal's algorithm
 	for (const edge of edges) {
-		const { V, W } = edge;
-		const index1 = V.x * columns + V.y;
-		const index2 = W.x * columns + W.y;
+		const { source, destination } = edge;
+		const index1 = source.x * columns + source.y;
+		const index2 = destination.x * columns + destination.y;
 
 		if (findSet(index1) !== findSet(index2)) {
-			maze[V.x][V.y] = updateWall(maze[V.x][V.y], getDirection(V, W));
-			maze[W.x][W.y] = updateWall(maze[W.x][W.y], getDirection(W, V));
+			maze[source.x][source.y] = updateWall(maze[source.x][source.y], getDirection(source, destination));
+			maze[destination.x][destination.y] = updateWall(maze[destination.x][destination.y], getDirection(destination, source));
 			unionSets(index1, index2);
 		}
 	}
-
 	return [maze, []];
 };
