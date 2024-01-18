@@ -1,5 +1,5 @@
 import { Coordinate, Maze } from "../../types/algorithms.types";
-import { getDirection, updateWall } from "../../utils/algorithms.utils";
+import { OPPOSITE_DIRECTIONS, getDirection, updateWall } from "../../utils/algorithms.utils";
 
 const DEFAULT_WALL = "0000";
 
@@ -61,8 +61,9 @@ export const createMazeKruskal = (rows: number, columns: number): [Maze, Coordin
 		const index2 = destination.x * columns + destination.y;
 
 		if (findSet(index1) !== findSet(index2)) {
-			maze[source.x][source.y] = updateWall(maze[source.x][source.y], getDirection(source, destination));
-			maze[destination.x][destination.y] = updateWall(maze[destination.x][destination.y], getDirection(destination, source));
+			const direction = getDirection(source, destination);
+			maze[source.x][source.y] = updateWall(maze[source.x][source.y], direction);
+			maze[destination.x][destination.y] = updateWall(maze[destination.x][destination.y], OPPOSITE_DIRECTIONS[direction]);
 			unionSets(index1, index2);
 		}
 	}
