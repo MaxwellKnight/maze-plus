@@ -15,18 +15,18 @@ export const OPPOSITE_DIRECTIONS: {
 	[RIGHT]: LEFT,
 	[BOTTOM]: TOP,
 	[LEFT]: RIGHT
- };
+};
  
  
  // Constant object for representing directions
- const DIRECTIONS_CORDS: { 
+export const DIRECTIONS_CORDS: { 
 	[key: number]: Coordinate
 } = {
 	[TOP]: { x: -1, y: 0, direction: TOP },
 	[RIGHT]: { x: 0, y: 1, direction: RIGHT },
 	[BOTTOM]: { x: 1, y: 0, direction: BOTTOM },
 	[LEFT]: { x: 0, y: -1, direction: LEFT },
- };
+};
 
 /**
  * Get a unique key for a coordinate based on its row and column.
@@ -46,7 +46,7 @@ export const getCoordinateKey = (row: number, column: number): string => `${row}
  * @param {number} columns - The total number of columns.
  * @returns {boolean} - True if the coordinate is within range; otherwise, false.
  */
-const isRange = (x: number, y: number, rows: number, columns: number): boolean => (0 <= x && x < rows) && (0 <= y && y < columns);
+export const isRange = (x: number, y: number, rows: number, columns: number): boolean => (0 <= x && x < rows) && (0 <= y && y < columns);
 
 /**
  * Update the current wall representation to include a wall in the specified direction.

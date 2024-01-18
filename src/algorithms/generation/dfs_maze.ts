@@ -1,5 +1,5 @@
 import { Coordinate, Maze } from '../../types/algorithms.types';
-import { DIRECTIONS, isRange, OPPOSITE_DIRECTIONS, getCoordinateKey, DIRECTIONS_CORDS, updateWall } from '../../utils/algorithms.utils';
+import { DIRECTIONS, isRange, OPPOSITE_DIRECTIONS, getCoordinateKey, updateWall, DIRECTIONS_CORDS } from '../../utils/algorithms.utils';
 
 const { TOP, RIGHT, BOTTOM, LEFT } = DIRECTIONS;
 const DEFAULT_WALL = "0000";
