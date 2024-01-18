@@ -1,14 +1,14 @@
 import { Coordinate, Directions, Maze } from "../types/algorithms.types";
 
 // Constants for representing directions
-const DIRECTIONS: Directions = { TOP: 0, RIGHT: 1, BOTTOM: 2, LEFT: 3 }
+export const DIRECTIONS: Directions = { TOP: 0, RIGHT: 1, BOTTOM: 2, LEFT: 3 }
 const { TOP, RIGHT, BOTTOM, LEFT } = DIRECTIONS;
 
 //Represntation of a wall is "1" 
 const WALL = "1";
 
 // Constant object for mapping directions to their opposites
-const OPPOSITE_DIRECTIONS: { 
+export const OPPOSITE_DIRECTIONS: { 
 	[key: number]: number 
 } = {
 	[TOP]: BOTTOM,
@@ -35,7 +35,7 @@ const OPPOSITE_DIRECTIONS: {
  * @param {number} column - The column coordinate.
  * @returns {string} - A unique key for the coordinate.
  */
-const getCoordinateKey = (row: number, column: number): string => `${row},${column}`;
+export const getCoordinateKey = (row: number, column: number): string => `${row},${column}`;
 
 /**
  * Validate if a coordinate is within the specified range.
@@ -55,7 +55,7 @@ const isRange = (x: number, y: number, rows: number, columns: number): boolean =
  * @param {number} direction - The direction to add a wall (TOP, RIGHT, BOTTOM, LEFT).
  * @returns {string} - The updated wall representation.
  */
-const updateWall = (currentWall: string, direction: number) =>
+export const updateWall = (currentWall: string, direction: number) =>
 	currentWall.substring(0, direction) + WALL + currentWall.substring(direction + 1);
 
 /**
@@ -92,7 +92,7 @@ const isNeighbor = (direction: number, source: Coordinate, destination: Coordina
  * @param {Set<string>} visited - The set of visited cell coordinates.
  * @returns {Coordinate[]} - An array of unvisited neighbor coordinates.
  */
-const getNeighbors = (source: Coordinate, rows: number, columns: number, maze: Maze, visited: Set<string>): Coordinate[] => {
+export const getNeighbors = (source: Coordinate, rows: number, columns: number, maze: Maze, visited: Set<string>): Coordinate[] => {
 	const neighbors: Coordinate[] = [];
 
 	for (let direction of [TOP, RIGHT, BOTTOM, LEFT]) {
@@ -107,6 +107,14 @@ const getNeighbors = (source: Coordinate, rows: number, columns: number, maze: M
   return neighbors;
 }
 
+export const getDirection = (source: Coordinate, destination: Coordinate): number => {
+	const dx = destination.x - source.x;
+	const dy = destination.y - source.y;
 
+	if(dx === 0 && dy === -1) 			return TOP;
+	else if (dx === 0 && dy === 1) 	return BOTTOM;
+	else if (dx === -1 && dy === 0) 	return LEFT;
+	else if (dx === 1 && dy === 0) 	return RIGHT;
 
-export { DIRECTIONS, DIRECTIONS_CORDS, OPPOSITE_DIRECTIONS, isRange, getCoordinateKey, getNeighbors, updateWall };
+	throw new Error("Invalid coordinates: cells must be neighbors.");
+};
