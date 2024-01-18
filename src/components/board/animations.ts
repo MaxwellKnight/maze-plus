@@ -22,6 +22,8 @@ export const animateMazeDFS = async (delay: number = DEFAULT_DELAY, maze: Maze, 
 		setMaze(() => tempMaze);
 		setCurrentCell({ x, y });
 	}, delay);
+
+	setMaze(() => finalMaze);
 };
 
 /**

@@ -46,7 +46,7 @@ const getCoordinateKey = (row: number, column: number): string => `${row},${colu
  * @param {number} columns - The total number of columns.
  * @returns {boolean} - True if the coordinate is within range; otherwise, false.
  */
-const validateRange = (x: number, y: number, rows: number, columns: number): boolean => (0 <= x && x < rows) && (0 <= y && y < columns);
+const isRange = (x: number, y: number, rows: number, columns: number): boolean => (0 <= x && x < rows) && (0 <= y && y < columns);
 
 /**
  * Update the current wall representation to include a wall in the specified direction.
@@ -59,7 +59,7 @@ const updateWall = (currentWall: string, direction: number) =>
 	currentWall.substring(0, direction) + WALL + currentWall.substring(direction + 1);
 
 /**
- * Validate if a neighboring cell is within range, unvisited, and has a valid path in the maze.
+ * Validate if a neighboring cell is within range, unvisited, and has a valid path in the maze (for the BFS algorithm).
  *
  * @param {number} direction - The direction to the neighboring cell.
  * @param {Coordinate} source - The source cell coordinates.
@@ -70,12 +70,12 @@ const updateWall = (currentWall: string, direction: number) =>
  * @param {Maze} maze - The maze representation.
  * @returns {boolean} - True if the neighbor is valid; otherwise, false.
  */
-const validateNeighbor = (direction: number, source: Coordinate, destination: Coordinate, rows: number, columns: number, visited: Set<string>, maze: Maze): boolean => {
+const isNeighbor = (direction: number, source: Coordinate, destination: Coordinate, rows: number, columns: number, visited: Set<string>, maze: Maze): boolean => {
 	const x = source.x + destination.x;
 	const y = source.y + destination.y;
 
 	// Check if the neighbor is within range, has a valid path, and is unvisited
-	const range = validateRange(x, y, rows, columns);
+	const range = isRange(x, y, rows, columns);
 	const isPathExist = range && maze[source.x][source.y][direction] !== "0";
 	const isVisited = !visited.has(`${x},${y}`);
 
@@ -101,7 +101,7 @@ const getNeighbors = (source: Coordinate, rows: number, columns: number, maze: M
 
 		const x = source.x + destination.x;
 		const y = source.y + destination.y;
-		if (validateNeighbor(direction, source, destination, rows, columns, visited, maze))
+		if (isNeighbor(direction, source, destination, rows, columns, visited, maze))
 			neighbors.push({ x, y, direction });
 		}
   return neighbors;
@@ -109,4 +109,4 @@ const getNeighbors = (source: Coordinate, rows: number, columns: number, maze: M
 
 
 
-export { DIRECTIONS, DIRECTIONS_CORDS, OPPOSITE_DIRECTIONS, validateRange, getCoordinateKey, getNeighbors, updateWall };
+export { DIRECTIONS, DIRECTIONS_CORDS, OPPOSITE_DIRECTIONS, isRange, getCoordinateKey, getNeighbors, updateWall };

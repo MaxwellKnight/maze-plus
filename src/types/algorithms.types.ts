@@ -12,7 +12,7 @@ export interface Coordinate extends XY  {
 
 export type Maze = string[][];
 
-type DirectionType = "TOP" | "BOTTOM" | "LEFT" | "RIGHT";
+export type DirectionType = "TOP" | "BOTTOM" | "LEFT" | "RIGHT";
 export type Directions = { 
 	[direction in DirectionType]: number;
 };

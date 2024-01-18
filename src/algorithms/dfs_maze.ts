@@ -1,5 +1,5 @@
 import { Coordinate, Maze } from '../types/algorithms.types';
-import { DIRECTIONS, validateRange, OPPOSITE_DIRECTIONS, getCoordinateKey, DIRECTIONS_CORDS, updateWall } from '../utils/algorithms.utils';
+import { DIRECTIONS, isRange, OPPOSITE_DIRECTIONS, getCoordinateKey, DIRECTIONS_CORDS, updateWall } from '../utils/algorithms.utils';
 
 const { TOP, RIGHT, BOTTOM, LEFT } = DIRECTIONS;
 const DEFAULT_WALL = "0000";
@@ -14,9 +14,9 @@ const DEFAULT_WALL = "0000";
  * @param {Set<string>} visited - The set of visited cell coordinates.
  * @returns {boolean} - True if the neighbor is valid; otherwise, false.
  */
-const validateNeighbor = (direction: Coordinate, source: Coordinate, rows: number, columns: number, visited: Set<string>) => (
+const isNeighbor = (direction: Coordinate, source: Coordinate, rows: number, columns: number, visited: Set<string>) => (
 	direction
-	&& validateRange(source.x + direction.x, source.y + direction.y, rows, columns)
+	&& isRange(source.x + direction.x, source.y + direction.y, rows, columns)
 	&& !visited.has(getCoordinateKey(direction.x + source.x, direction.y + source.y))
 );
 
@@ -39,7 +39,7 @@ const getNeighbors = (source: Coordinate | undefined, visited: Set<string>, rows
 
 		const x = source.x + destination.x;
 		const y = source.y + destination.y;
-		if (validateNeighbor(destination, source, rows, columns, visited))
+		if (isNeighbor(destination, source, rows, columns, visited))
 			unvisitedList.push({ x, y, direction });
 	}
 	return unvisitedList;
