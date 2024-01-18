@@ -1,5 +1,5 @@
-import { Coordinate, Maze } from "../types/algorithms.types";
-import { getCoordinateKey, getNeighbors } from "../utils/algorithms.utils";
+import { Coordinate, Maze } from "../../types/algorithms.types";
+import { getCoordinateKey, getNeighbors } from "../../utils/algorithms.utils";
 
 type A_Coordinate = Required<Omit<Coordinate, "direction">>;
 
